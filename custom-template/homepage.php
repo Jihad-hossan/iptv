@@ -204,7 +204,7 @@
     </div>
 </section>
 <section class="plan_2">
-<div class="container-full">
+    <div class="container-full">
         <div class="pricing">
             <div class="swiper pricing-swiper">
                 <div class="swiper-wrapper">
@@ -479,6 +479,82 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial">
+    <div class="container">
+        <div class="row plan-row">
+            <div class="col-md-6">
+                <img class="circle-shape" src="<?php echo get_template_directory_uri(); ?>/assets/images/testimonial.png" alt="">
+                <h2 class="section-title">Bekijk de <strong>reacties van</strong> anderen over ons</h2>
+            </div>
+            <div class="col-md-6 right">
+                <div class="content">
+                    <p>Anderen waren uw voor bij een aankoop en hebben hierover een review geplaatst</p>
+                    <div class="btns-wrapper">
+                        <a href="#" class="iptv-btn btn-1">schrijf een review</a>
+                        <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+    <div class="container">
+        <div class="row plan-row">
+            <div class="content">
+                <img class="img" src="<?php echo get_template_directory_uri(); ?>/assets/images/googles.png" alt="">
+                <h2 class="section-title">Veel Gestelde <strong>IPTV Vragen</strong></h2>
+                <p>De meest gestelde vragen hebben wij al op een rijtje gezet</p>
+            </div>
+        </div>
+        <div class="row plan-row mt-5">
+            <div class="faq-inner">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Accordion Item #1
+                        </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Accordion Item #2
+                        </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Accordion Item #3
+                        </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

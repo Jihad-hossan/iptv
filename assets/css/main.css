@@ -556,6 +556,84 @@ p, a, li {
   padding-bottom: 90px;
 }
 
+.testimonial {
+  padding: 300px 20px 90px;
+  background: url("../images/hero-circle.png") no-repeat center/contain;
+}
+.testimonial .plan-row {
+  position: relative;
+}
+.testimonial .plan-row .circle-shape {
+  position: absolute;
+  top: -300px;
+  left: 40%;
+  rotate: -10.5deg;
+}
+.testimonial .plan-row .right {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 20px;
+}
+.testimonial .plan-row .right .btns-wrapper .iptv-btn {
+  padding: 30px 40px;
+  border-radius: 12px;
+}
+
+.faq {
+  padding: 200px 20px 90px;
+  background: url("../images/hero-circle.png") no-repeat top center/600px;
+}
+.faq .plan-row {
+  justify-content: center;
+}
+.faq .plan-row .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  max-width: 650px;
+}
+.faq .plan-row .content .img {
+  rotate: -12.88deg;
+}
+.faq .plan-row .content .section-title {
+  text-align: center;
+  rotate: -2deg;
+}
+.faq .plan-row .content p {
+  text-align: center;
+}
+.faq .plan-row .faq-inner {
+  max-width: 937px;
+}
+.faq .plan-row .faq-inner .accordion-item {
+  background: #122429;
+  border-color: rgba(255, 255, 255, 0.1019607843);
+  margin-bottom: 16px;
+  border-radius: 16px;
+}
+.faq .plan-row .faq-inner .accordion-item .accordion-button {
+  background: #122429;
+  color: #ffffff;
+  font-family: "Axiforma", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 128%;
+  letter-spacing: 0%;
+  text-transform: capitalize;
+  border-radius: 14px;
+}
+.faq .plan-row .faq-inner .accordion-item .accordion-button::after {
+  background: url("../images/arrow-down.png") no-repeat top center/contain;
+}
+.faq .plan-row .faq-inner .accordion-item .accordion-button:not(.collapsed) {
+  box-shadow: none;
+}
+.faq .plan-row .faq-inner .accordion-item .accordion-body {
+  color: #ffffff;
+  opacity: 0.6;
+}
+
 @keyframes swiperAnimation {
   0% {
     transform: translateX(0);

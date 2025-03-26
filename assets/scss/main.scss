@@ -332,6 +332,101 @@
     padding-bottom: 90px;
 }
 
+// testimonial
+.testimonial{
+    padding: 300px 20px 90px;
+    background: url("../images/hero-circle.png") no-repeat center / contain;
+
+    .plan-row{
+        position: relative;
+
+        .circle-shape{
+            position: absolute;
+            top: -300px;
+            left: 40%;
+            rotate: -10.5deg;
+        }
+
+        .right{
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 20px;
+
+            .btns-wrapper{
+                .iptv-btn{
+                    padding: 30px 40px;
+                    border-radius: 12px;
+                }
+            }
+        }
+    }
+}
+
+// FAQ
+.faq{
+    padding: 200px 20px 90px;
+    background: url("../images/hero-circle.png") no-repeat top center / 600px;
+
+    .plan-row{
+        justify-content: center;
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            max-width: 650px;
+
+            .img{
+                rotate: -12.88deg;
+            }
+            .section-title{
+                text-align: center;
+                rotate: -2deg;
+            }
+            p{
+                text-align: center;
+            }
+        }
+
+        .faq-inner{
+            max-width: 937px;
+
+            .accordion-item {
+                background: #122429;
+                border-color: #FFFFFF1A;
+                margin-bottom: 16px;
+                border-radius: 16px;
+                
+                .accordion-button{
+                    background: #122429;
+                    color: $text-color;
+                    font-family: $font-primary;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 128%;
+                    letter-spacing: 0%;
+                    text-transform: capitalize;
+                    border-radius: 14px;
+
+                    &::after{
+                        background: url("../images/arrow-down.png") no-repeat top center / contain;
+                    }
+
+                    &:not(.collapsed){
+                        box-shadow: none;
+                    }
+                }
+
+                .accordion-body{
+                    color: $text-color;
+                    opacity: .6;
+                }
+            }
+        }
+    }
+}
+
 
 @keyframes swiperAnimation{
     0%{
