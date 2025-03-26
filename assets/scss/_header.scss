@@ -1,0 +1,37 @@
+.iptv-header{
+    padding: 15px 20px;
+    z-index: 9999;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+
+    .header-right {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+
+        .login {
+            padding-left: 40px;
+            border-left: 1px solid #FFFFFF42;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            a {
+                font-family: $font-primary;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 100%;
+                letter-spacing: 0%;
+                text-align: justify;
+                color: $text-color;
+                text-decoration: none;
+
+                &:hover{
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}

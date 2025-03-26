@@ -1,0 +1,74 @@
+// global
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: $primary-bg;
+}
+h1, h2, h3, h4, h5, h6, p, li{
+    margin: 0;
+}
+
+p, a, li{
+    color: $text-color;
+    font-family: $font-primary;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+// Section Title
+.section-title{
+    color: $text-color;
+    font-family: $font-primary;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-transform: capitalize;
+
+    strong{
+        font-weight: 700;
+    }
+
+    .special {
+        position: relative; // Needed for absolute positioning of the image
+        display: inline-block; // Keeps the text inline
+    
+        &::after {
+            content: "";
+            position: absolute;
+            top: -26px;
+            right: -35px;
+            width: 51px;
+            height: 56px;
+            background: url("../images/special-icon.png") no-repeat center / contain;
+        }
+    }
+    
+}
+
+// Card Title
+.card-title{
+    font-family: $font-secondery;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 130%;
+    letter-spacing: 0%;
+}
+
+// Subtitle
+.subtitle{
+    border-radius: 100px;
+    padding: 12px 24px;
+    background: $primary-color;
+    color: $text-color;
+    font-family: $font-primary;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
