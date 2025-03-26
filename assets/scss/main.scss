@@ -13,6 +13,15 @@
     position: relative;
     background: url("../images/hero-bg.png") no-repeat center / cover;
 
+    &::before{
+        content: "";
+        width: 50%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: red;
+    }
+
     &::after{
         position: absolute;
         content: "";
@@ -25,11 +34,18 @@
         z-index: -1;
     }
 
+
     .left-side{
         display: flex;
         flex-direction: column;
         gap: 30px;
         padding-right: 50px;
+        position: relative;
+
+        .circle-shape{
+            position: absolute;
+            top: -100px;
+        }
     }
 
     .right-side{
@@ -119,10 +135,12 @@
         justify-content: flex-end;
         margin-bottom: 15px;
         padding-left: 30px;
+        position: relative;
 
-        .shape-circle{
-            width: 243px;
-            height: 243px;
+        .circle-shape{
+            position: absolute;
+            bottom: 500px;
+            left: -500px;
         }
     }
 
@@ -176,6 +194,9 @@
 }
 
 // Series
+.series-wrapper{
+    overflow: hidden;
+}
 .series{
     padding: 60px 20px 0px;
     overflow-x: hidden;
@@ -257,6 +278,7 @@
     padding: 55px 20px;
     margin-left: -4px;
     margin-top: 50px;
+    margin-bottom: 50px;
     rotate: -3deg;
 
     .photobanner__wrap_3{
@@ -288,7 +310,11 @@
 
 // Plan
 .plan{
-    padding: 90px 20px;
+    padding: 90px 20px 0;
+
+    .plan-row{
+        background: url("../images/plan-shape-circle.png") no-repeat center / cover;
+    }
     .content{
         display: flex;
         align-items: center;
@@ -298,8 +324,14 @@
 
     .reel-camera{
         rotate: -7.42deg;
+        display: flex;
+        justify-content: flex-end;
     }
 }
+.plan_2{
+    padding-bottom: 90px;
+}
+
 
 @keyframes swiperAnimation{
     0%{

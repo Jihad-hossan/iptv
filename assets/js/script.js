@@ -12,10 +12,15 @@
             });
         });
 
-        // Swiper
-        var swiper = new Swiper(".swiper", {
+        // Hero card Swiper
+        var swiper = new Swiper(".hero-card-swiper", {
             effect: "cards",
             grabCursor: true,
+            initialSlide: 2,
+            loop: true,
+            mousewheel: {
+              invert: false,
+            },
             navigation: {
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
@@ -25,6 +30,21 @@
               onlyInViewport: false,
             },
         });
+
+      // Pricing Slider
+      var pricing_swiper = new Swiper(".pricing-swiper", {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          initialSlide: 1,
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          }
+      });
           
     });
     

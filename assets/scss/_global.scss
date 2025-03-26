@@ -72,3 +72,168 @@ p, a, li{
     line-height: 100%;
     letter-spacing: 0%;
 }
+
+.pricing{
+    .pricing-swiper{
+        padding: 60px 130px;
+
+        .pricing-card{
+            background-color: #13242A;
+            border-radius: 24px;
+            position: relative;
+    
+            .card-top{
+                background-color: #21383E;
+                padding: 45px 38px 30px;
+                border-radius: 12px 12px 0 0;
+                position: relative;
+    
+                &::after{
+                    content: "";
+                    width: 64px;
+                    height: 64px;
+                    position: absolute;
+                    top: -7px;
+                    right: -7px;
+                    clip-path: polygon(100% 0, 0 0, 100% 100%);
+                    background-color: $primary-bg;
+                }
+    
+                .top{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+    
+                    .price-review{
+                        display: flex;
+                        gap: 15px;
+                        align-items: flex-end;
+                        justify-content: space-between;
+    
+                        .price{
+                            display: flex;
+                            align-items: flex-end;
+                            gap: 8px;
+                            .amount{
+                                font-family: $font-primary;
+                                font-weight: 700;
+                                font-size: 48px;
+                                line-height: 100%;
+                                letter-spacing: 0%;
+                                vertical-align: middle;
+                                color: $text-color;
+                                margin-bottom: -6px;
+                            }
+                            p{
+                                color: #FFFFFF66;
+                            }
+                        }
+                    }
+                }
+    
+                .middle{
+                    margin-top: 50px;
+                    .features{
+                        list-style: none;
+                        padding-left: 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+    
+                        li{
+                            display: flex;
+                            gap: 16px;
+                            align-items: center;
+                            border-bottom: 1px dashed #ffffff23;
+                            border-image: repeating-linear-gradient(90deg, #ffffff23 0, #ffffff23 10px, transparent 10px, transparent 20px) 1;
+    
+                            padding-bottom: 20px;
+    
+                            span{
+                                color: #CCD0CF;
+                            }
+                        }
+                    }
+                }
+    
+                .bottom{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    margin-top: 30px;
+    
+                    .iptv-btn{
+                        border-radius: 12px;
+                        padding: 30px 20px;
+                    }
+                }
+            }
+            .card-bottom{
+                padding: 38px 64px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        .swiper-button-next, .swiper-button-prev{
+            display: none;
+        }
+
+        .swiper-slide {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .swiper-slide-next{
+            transform: translateY(-40px);
+        }
+
+        .swiper-slide-prev, .low_opacity{
+            opacity: .4;
+        }
+
+        span.swiper-pagination-bullet {
+            width: 62px;
+            height: 4px;
+            border-radius: 1px;
+            background-color: #FFFFFF33;
+
+            &.swiper-pagination-bullet-active{
+                background-color: #FF5B4A;
+            }
+        }
+
+        .popular-badge{
+            position: absolute;
+            z-index: 5;
+            right: 100px;
+            top: -7px;
+            display: none;
+
+            p{
+                padding: 10px 15px;
+                background-color: $primary-color;
+                position: relative;
+
+                &::after{
+                    content: "";
+                    width: 4px;
+                    height: 7px;
+                    background: $primary-color;
+                    position: absolute;
+                    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+                    top: 0;
+                    right: -4px;
+                }
+            }
+        }
+        .popular {
+            .popular-badge{
+                display: block;
+            }
+        }
+    }
+}
+
+.container-full{
+    max-width: 1920px;
+}
