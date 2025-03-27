@@ -560,4 +560,64 @@
     </div>
 </section>
 
+<!-- Flags -->
+<div class="flags-wrapper">
+    <section class="flags">
+        <div class="container-fluid">
+            <div class="photobanner__wrap_3">
+                <div class="photobanner_3">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-1.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-2.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-3.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-4.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-5.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-6.png" alt="" />
+                </div>
+                <div class="photobanner_3">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-1.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-2.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-3.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-4.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-5.png" alt="" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-6.png" alt="" />
+                </div>
+            <div>
+        </div>
+    </section>
+</div>
+
+<!-- Blogs -->
+<section class="blogs">
+    <div class="container">
+        <div class="row plan-row">
+            <div class="col-md-6 left">
+                <h2 class="section-title">Waarom IPTV Dark</h2>
+            </div>
+            <div class="col-md-6 right">
+                <img class="circle-shape" src="<?php echo get_template_directory_uri(); ?>/assets/images/blogs.png" alt="">
+            </div>
+        </div>
+        <div class="row post-row">
+            <div class="col-md-4">
+                <a class="post" href="#">
+                    <h4 class="title">Videoland / Nlziet / Netflix / Disney+ / Amazon prime/ HBO ma</h4>
+                    <p class="post-date">February 12, 2023</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="post" href="#">
+                    <h4 class="title">Videoland / Nlziet / Netflix / Disney+ / Amazon prime/ HBO ma</h4>
+                    <p class="post-date">February 12, 2023</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="post" href="#">
+                    <h4 class="title">Videoland / Nlziet / Netflix / Disney+ / Amazon prime/ HBO ma</h4>
+                    <p class="post-date">February 12, 2023</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <?php get_footer(); ?>

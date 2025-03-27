@@ -634,6 +634,100 @@ p, a, li {
   opacity: 0.6;
 }
 
+.flags-wrapper {
+  overflow: hidden;
+}
+
+.flags {
+  background: url("../images/reel-bg.png") no-repeat center/cover;
+  padding: 55px 20px;
+  margin-left: -4px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  rotate: -3deg;
+}
+.flags .photobanner__wrap_3 {
+  display: flex;
+}
+.flags .photobanner__wrap_3:hover .photobanner_3 {
+  animation-play-state: paused;
+}
+.flags .photobanner__wrap_3 .photobanner_3 {
+  display: flex;
+  animation-name: swiperAnimation;
+  animation-duration: 40s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  gap: 50px;
+}
+.flags .photobanner__wrap_3 .photobanner_3 img {
+  width: auto;
+  max-height: 80px;
+  object-fit: cover;
+  padding-right: 20px;
+  opacity: 0.5;
+  transition: 0.3s ease-in-out;
+}
+.flags .photobanner__wrap_3 .photobanner_3 img:hover {
+  opacity: 1;
+}
+
+.blogs {
+  padding: 0 20px 90px;
+  background: url("../images/hero-circle.png") no-repeat center/contain;
+}
+.blogs .plan-row .left {
+  display: flex;
+  align-items: center;
+}
+.blogs .plan-row .right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+.blogs .plan-row .right .circle-shape {
+  rotate: -2deg;
+  margin-top: -95px;
+}
+.blogs .post-row {
+  z-index: 3;
+  margin-top: -40px;
+}
+.blogs .post-row .col-md-4 {
+  z-index: 2;
+}
+.blogs .post-row .post {
+  display: block;
+  background: url("../images/post-img-1.png") no-repeat center/cover;
+  width: 100%;
+  height: 233px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.blogs .post-row .post .title {
+  font-family: "Axiforma", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 136%;
+  letter-spacing: 0%;
+  color: #ffffff;
+}
+.blogs .post-row .post .post-date {
+  font-family: "Axiforma", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 136%;
+  letter-spacing: 0%;
+  color: #ffffff;
+  opacity: 0.6;
+}
+
 @keyframes swiperAnimation {
   0% {
     transform: translateX(0);
