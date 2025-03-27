@@ -22,6 +22,7 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'iptv' ); ?></a>
 
@@ -58,6 +59,9 @@
 		</nav>
 	</header> -->
 
+	<?php 
+		$sign_in = get_field('sign_in', 'option');  
+	?>
 	<header>
 		<nav class="navbar navbar-expand-lg iptv-header">
 			<div class="container">
@@ -67,9 +71,11 @@
 						<a href="#">En</a>
 						<a href="#">Ro</a>
 					</div>
-					<div class="login">
-						<a href="#">Sign In</a>
-					</div>
+					<?php if(!empty($sign_in)): ?>
+						<div class="login">
+							<a href="<?php echo esc_url( $sign_in['url'] ); ?>" target="<?php echo esc_attr( $sign_in['target'] ); ?>"><?php echo esc_html(_e($sign_in['title'], 'iptv')); ?></a>
+						</div>
+					<?php endif; ?>
 				</div>
 				</div>
 			</div>

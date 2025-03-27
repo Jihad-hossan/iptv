@@ -591,31 +591,35 @@
     <div class="container">
         <div class="row plan-row">
             <div class="col-md-6 left">
-                <h2 class="section-title">Waarom IPTV Dark</h2>
+                <h2 class="section-title">Waarom IPTV Dark</h2>
             </div>
             <div class="col-md-6 right">
                 <img class="circle-shape" src="<?php echo get_template_directory_uri(); ?>/assets/images/blogs.png" alt="">
             </div>
         </div>
         <div class="row post-row">
-            <div class="col-md-4">
-                <a class="post" href="#">
-                    <h4 class="title">Videoland / Nlziet / Netflix / Disney+ / Amazon prime/ HBO ma</h4>
-                    <p class="post-date">February 12, 2023</p>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a class="post" href="#">
-                    <h4 class="title">Videoland / Nlziet / Netflix / Disney+ / Amazon prime/ HBO ma</h4>
-                    <p class="post-date">February 12, 2023</p>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a class="post" href="#">
-                    <h4 class="title">Videoland / Nlziet / Netflix / Disney+ / Amazon prime/ HBO ma</h4>
-                    <p class="post-date">February 12, 2023</p>
-                </a>
-            </div>
+            <?php
+            $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 3, // Get 3 most recent posts
+                'orderby' => 'date',
+                'order' => 'DESC'
+            );
+            $query = new WP_Query($args);
+            
+            if ($query->have_posts()) :
+                while ($query->have_posts()) : $query->the_post(); ?>
+                    <div class="col-md-4">
+                        <a class="post" href="<?php the_permalink(); ?>">
+                            <h4 class="title"><?php the_title(); ?></h4>
+                            <p class="post-date"><?php echo get_the_date('F j, Y'); ?></p>
+                        </a>
+                    </div>
+                <?php endwhile;
+                wp_reset_postdata();
+            else : ?>
+                <p>No posts found</p>
+            <?php endif; ?>
         </div>
     </div>
 </section>

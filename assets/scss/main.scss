@@ -310,10 +310,12 @@
 
 // Plan
 .plan{
-    padding: 90px 20px 0;
+    padding: 0 20px;
 
     .plan-row{
         background: url("../images/plan-shape-circle.png") no-repeat center / cover;
+        margin-top: -80px;
+        margin-bottom: -185px;
     }
     .content{
         display: flex;
