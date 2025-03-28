@@ -16,7 +16,7 @@ p, a, li {
   font-family: "Axiforma", sans-serif;
   font-weight: 500;
   font-size: 16px;
-  line-height: 100%;
+  line-height: 120%;
   letter-spacing: 0%;
 }
 @media screen and (max-width: 1050px) {
@@ -691,8 +691,24 @@ p, a, li {
 .abonnement {
   margin-top: 50px;
   padding: 150px 20px 90px;
-  background: url("../images/reel-device.png") no-repeat top center/200px;
+  background: url("../images/iptv-shape.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 43% -100px;
   overflow: hidden;
+}
+.abonnement .left {
+  position: relative;
+}
+.abonnement .left .circle-shape {
+  position: absolute;
+  right: -90px;
+  top: -170px;
+}
+@media screen and (max-width: 992px) {
+  .abonnement .left .circle-shape {
+    display: none;
+  }
 }
 .abonnement .right {
   display: flex;
@@ -701,11 +717,6 @@ p, a, li {
   margin-bottom: 15px;
   padding-left: 30px;
   position: relative;
-}
-.abonnement .right .circle-shape {
-  position: absolute;
-  bottom: 500px;
-  left: -500px;
 }
 .abonnement .to-center {
   justify-content: center;

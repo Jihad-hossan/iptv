@@ -1,51 +1,82 @@
 <?php /* Template Name: Home */ ?>
 <?php get_header();?>
 <!-- Banner -->
+
+<?php 
+    $hero = get_field( "hero" ); 
+    if(!empty($hero)):
+?>
 <section class="hero" >
     <div class="container">
         <div class="row">
+            <?php 
+                $title = $hero['title'];
+                $description = $hero['description'];
+                $button__01 = $hero['button__01'];
+                $button_02 = $hero['button_02'];
+                $image_slider = $hero['image_slider'];
+                $scroll_to_bottom = $hero['scroll_to_bottom'];
+            ?>
             <div class="col-md-6 left-side">
-                <img class="circle-shape" src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-circle.png" alt="">
-                <h1 class="section-title">Het beste <strong><span class="special">IPTV</span> abonnement</strong> van Nederland</h1>
-                <p>Met IPTV Dark heeft u toegang tot duizenden kanalen uit de gehele wereld, duizenden films en honderden series!</p>
-                <div class="btns-wrapper">
-                    <a href="#" class="iptv-btn btn-1">PROBEER 24 UUR</a>
-                    <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                </div>
-            </div>
-            <div class="col-md-6 right-side">
-                <div class="swiper hero-card-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slider-image-1.png" alt="" class="slider-img"></div>
-                        <div class="swiper-slide"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slider-image-2.png" alt="" class="slider-img"></div>
-                        <div class="swiper-slide"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slider-image-3.png" alt="" class="slider-img"></div>
-                        <div class="swiper-slide"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slider-image-1.png" alt="" class="slider-img"></div>
-                        <div class="swiper-slide"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slider-image-2.png" alt="" class="slider-img"></div>
-                        <div class="swiper-slide"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slider-image-3.png" alt="" class="slider-img"></div>
-                        
+                <img class="circle-shape" src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-circle.png" alt="<?php echo __("shape", 'iptv'); ?>">
+                <?php if(!empty($title)): ?>
+                    <h1 class="section-title"><?php echo esc_html(_e($title, 'iptv')); ?></h1>
+                <?php endif; ?>
+                <?php if(!empty($description)): ?>
+                    <p><?php echo esc_html(_e($description, 'iptv')); ?></p>
+                <?php endif; ?>
+                <?php if(!empty($button__01) || !empty($button__02)): ?>
+                    <div class="btns-wrapper">
+                        <?php if(!empty($button__01)): ?>
+                            <a href="<?php echo esc_url( $button__01['url'] ); ?>" target="<?php echo esc_attr( $button__01['target'] ); ?>" class="iptv-btn btn-1"><?php echo esc_html(_e($button__01['title'], 'iptv')); ?></a>
+                        <?php endif; ?>
+                        <?php if(!empty($button_02)): ?>
+                            <a href="<?php echo esc_url( $button_02['url'] ); ?>" target="<?php echo esc_attr( $button_02['target'] ); ?>" class="iptv-btn btn-2"><?php echo esc_html(_e($button_02['title'], 'iptv')); ?></a>
+                        <?php endif; ?>
                     </div>
-                    <span class="swiper-notification"></span>
-
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-
-                    <!-- If we need scrollbar -->
-                    <div class="swiper-scrollbar hidden"></div>
-                </div>
-
-                <div class="scroll-bottom">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/scroll-icon.png" alt="">
-                    <a href="#bottom-content" class="scroll-btn">Scroll to See More</a>
-                </div>
+                <?php endif; ?>
             </div>
+            <?php if(!empty($image_slider)): ?>
+                <div class="col-md-6 right-side">
+                    <div class="swiper hero-card-swiper">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($image_slider as $item): ?>
+                                <div class="swiper-slide"><img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" class="slider-img"></div>
+                            <?php endforeach;?>
+                        </div>
+                        <span class="swiper-notification"></span>
+
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <div class="swiper-scrollbar hidden"></div>
+                    </div>
+
+                    <?php if(!empty($scroll_to_bottom)): ?>
+                        <div class="scroll-bottom">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/scroll-icon.png" alt="<?php echo esc_html(_e("Arrow", 'iptv'))  ?>">
+                            <a href="#bottom-content" class="scroll-btn"><?php echo esc_html(_e($scroll_to_bottom, 'iptv')); ?></a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
 
+<?php 
+    $icon_list = $hero['icon_list'];
+    if(!empty($icon_list)):
+        $icon_1 = $icon_list['icon_1'];
+        $title_1 = $icon_list['title_1'];
+        $icon_2 = $icon_list['icon_2'];
+        $title_2 = $icon_list['title_2'];
+?>
 <!-- reel -->
 <section class="reel">
     <div class="container">
@@ -53,428 +84,280 @@
             <div class="col-md-6">
                 <div class="quality-badge">
                     <div class="left">
-                        <div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/full-hd.png" alt=""></div>
-                        <div class="content"><p>HD / FHD / 4K / 8K Kwaliteit</p></div>
+                        <?php if(!empty($icon_1)): ?>
+                            <div class="icon"><img src="<?php echo esc_url($icon_1['url']); ?>" alt="<?php echo  esc_attr($icon_1['alt']); ?>"></div>
+                        <?php endif; ?>
+                        <?php if(!empty($title_1)): ?>
+                            <div class="content"><p><?php echo esc_html(_e($title_1, 'iptv')); ?></p></div>
+                        <?php endif; ?>
                     </div>
                     <div class="right">
-                        <div class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/IGTV.png" alt=""></div>
-                        <div class="content"><p>7 Dagen geld terug garantie</p></div>
+                        <?php if(!empty($icon_2)): ?>
+                            <div class="icon"><img src="<?php echo esc_url($icon_2['url']); ?>" alt="<?php echo  esc_attr($icon_2['alt']); ?>"></div>
+                        <?php endif; ?>
+                        <?php if(!empty($title_2)): ?>
+                            <div class="content"><p><?php echo esc_html(_e($title_2, 'iptv')); ?></p></div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<?php endif; endif; ?>
 
+<?php 
+    $about = get_field( "about" ); 
+    if(!empty($about)):
+
+        $top_image = $about['top_image'];
+        $title = $about['title'];
+        $description = $about['description'];
+        $cards = $about['cards'];
+?>
 <!-- Abonnement section -->
 <section class="abonnement" id="bottom-content">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h2 class="section-title"><strong>IPTV</strong><br> Abonnement</h2>
+            <div class="col-md-6 left">
+                <?php if(!empty($top_image)): ?>
+                    <img class="circle-shape" src="<?php echo esc_url($top_image['url']); ?>" alt="<?php echo  esc_attr($top_image['alt']); ?>">
+                <?php endif; ?>
+                <?php if(!empty($title)): ?>
+                    <h2 class="section-title"><?php echo esc_html(_e($title, 'iptv')); ?></h2>
+                <?php endif; ?>
             </div>
-            <div class="col-md-6 right">
-                <img class="circle-shape" src="<?php echo get_template_directory_uri(); ?>/assets/images/iptv-shape.png" alt="">
-                <p>We hebben 2 verschillende iptv abonnementen. Premium IPTV is het beste die we hebben en wordt ook aangeraden door ons</p>
-            </div>
+
+            <?php if(!empty($description)): ?>
+                <div class="col-md-6 right">
+                    <p><?php echo esc_html(_e($description, 'iptv')); ?></p>
+                </div>
+            <?php endif; ?>
         </div>
-        <div class="row to-center">
-            <div class="cards">
-                <div class="card">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/card-icon.png" alt="">
-                    <h4 class="card-title">IPTV</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-                <div class="card">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Video-Movies.png" alt="">
-                    <h4 class="card-title">Zenders & VOD</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-                <div class="card">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/card-icon-2.png" alt="">
-                    <h4 class="card-title">Zenders Terugkijken</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-                <div class="card">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/card-icon.png" alt="">
-                    <h4 class="card-title">IPTV</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+
+        <?php if(!empty($cards)): ?>
+            <div class="row to-center">
+                <div class="cards">
+                    <?php foreach ($cards as $item): 
+                        $icon = $item['icon'];
+                        $title = $item['title'];
+                        $description = $item['description'];
+                    ?>
+                    <div class="card">
+                        <?php if(!empty($icon)): ?>
+                            <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo  esc_attr($icon['alt']); ?>">
+                        <?php endif; ?>
+                        <?php if(!empty($title)): ?>
+                            <h4 class="card-title"><?php echo esc_html(_e($title, 'iptv')); ?></h4>
+                        <?php endif; ?>
+                        <?php if(!empty($description)): ?>
+                            <p><?php echo esc_html(_e($description, 'iptv')); ?></p>
+                        <?php endif; ?>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
+<?php 
+    $series = get_field( "series" ); 
+    if(!empty($series)):
+
+        $subtitle = $series['subtitle'];
+        $title = $series['title'];
+        $description = $series['description'];
+        $series_slider_1 = $series['series_slider_1'];
+        $series_slider_2 = $series['series_slider_2'];
+        $series_slider_3 = $series['series_slider_3'];
+?>
 <!-- series -->
 <div class="series-wrapper">
     <section class="series">
         <div class="container">
             <div class="row to-center">
                 <div class="content">
-                    <p class="subtitle text-center">Populaire Films en Series</p>
-                    <h2 class="section-title text-center">Wij bieden u de nieuwste <strong>films en series</strong></h2>
-                    <p class="text-center">We hebben 2 verschillende iptv abonnementen. <strong>Premium IPTV</strong> is het beste die we hebben en wordt ook aangeraden door ons</p>
+                    <?php if(!empty($subtitle)): ?>
+                        <p class="subtitle text-center"><?php echo esc_html(_e($subtitle, 'iptv')); ?></p>
+                    <?php endif; ?>
+                    <?php if(!empty($title)): ?>
+                        <h2 class="section-title text-center"><?php echo esc_html(_e($title, 'iptv')); ?></h2>
+                    <?php endif; ?>
+                    <?php if(!empty($description)): ?>
+                        <p class="text-center"><?php echo esc_html(_e($description, 'iptv')); ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </section>
+
+    <?php if(!empty($series_slider_1)): ?>
     <section class="series-2">
         <div class="container-fluid">
             <div class="photobanner__wrap">
                 <div class="photobanner">
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
+                    <?php foreach ($series_slider_1 as $item): ?>
+                        <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                    <?php endforeach;?>
                 </div>
                 <div class="photobanner">
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
+                    <?php foreach ($series_slider_1 as $item): ?>
+                        <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                    <?php endforeach;?>
                 </div>
             <div>
         </div>
     </section>
+    <?php endif; ?>
+
+    <?php if(!empty($series_slider_2)): ?>
     <section class="series-2">
         <div class="container-fluid">
             <div class="photobanner__wrap_2">
                 <div class="photobanner_2">
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
+                    <?php foreach ($series_slider_2 as $item): ?>
+                        <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                    <?php endforeach;?>
                 </div>
                 <div class="photobanner_2">
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
-                    <img src="https://picsum.photos/350/250" alt="" />
+                    <?php foreach ($series_slider_2 as $item): ?>
+                        <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                    <?php endforeach;?>
                 </div>
             <div>
         </div>
     </section>
+    <?php endif; ?>
+
+    <?php if(!empty($series_slider_3)): ?>
     <!-- Streaming Platform -->
     <section class="streaming">
         <div class="container-fluid">
             <div class="photobanner__wrap_3">
                 <div class="photobanner_3">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-1.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-2.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-3.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-4.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-5.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-6.png" alt="" />
+                    <?php foreach ($series_slider_3 as $item): ?>
+                        <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                    <?php endforeach;?>
                 </div>
                 <div class="photobanner_3">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-1.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-2.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-3.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-4.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-5.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-6.png" alt="" />
+                    <?php foreach ($series_slider_3 as $item): ?>
+                        <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                    <?php endforeach;?>
                 </div>
             <div>
         </div>
     </section>
+    <?php endif; ?>
 </div>
+<?php endif; ?>
 
+<?php 
+    $pricing_plan = get_field( "pricing_plan" ); 
+    if(!empty($pricing_plan)):
+
+        $title = $pricing_plan['title'];
+        $description = $pricing_plan['description'];
+        $image = $pricing_plan['image'];
+        $pricing_cards = $pricing_plan['pricing_cards'];
+?>
 <!-- Plan -->
 <section class="plan">
     <div class="container">
         <div class="row plan-row">
             <div class="col-md-6 content">
-                <h3 class="section-title">Kies uw Plan</h3>
-                <p>In welk van onderstaand pakket heeft u interesse?</p>
+                <?php if(!empty($title)): ?>
+                    <h3 class="section-title"><?php echo esc_html(_e($title, 'iptv')); ?></h3>
+                <?php endif; ?>
+                <?php if(!empty($description)): ?>
+                    <p><?php echo esc_html(_e($description, 'iptv')); ?></p>
+                <?php endif; ?>
             </div>
-            <div class="col-md-6">
-                <div class="reel-camera">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/camera.png" alt="">
+            <?php if(!empty($image)): ?>
+                <div class="col-md-6">
+                    <div class="reel-camera">
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo  esc_attr($image['alt']); ?>">
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
+
+<?php if(!empty($pricing_cards)): ?>
 <section class="plan_2">
     <div class="container-full">
         <div class="pricing">
             <div class="swiper pricing-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="pricing-card">
-                            <div class="popular-badge">
-                                <p>Most Popular</p>
-                            </div>
-                            <div class="card-top">
-                                <div class="top">
-                                    <p>1 Maand</p>
-                                    <div class="price-review">
-                                        <div class="price">
-                                            <h1 class="amount">€15</h1>
-                                            <p>/eenmalig</p>
-                                        </div>
-                                        <div class="review">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" alt="">
+                    <?php 
+                        foreach ($pricing_cards as $item): 
+                            $features = $item['features'];
+                            $button_01 = $item['button_01'];
+                            $button_2 = $item['button_2'];
+                            $payment_methods = $item['payment_methods'];
+                    ?>
+                        <div class="swiper-slide <?php if($item['is_popular'] == 'yes'){ echo 'popular';} ?>">
+                            <div class="pricing-card">
+                                <?php if(!empty($item['popular_text'])): ?>
+                                    <div class="popular-badge">
+                                        <p><?php echo esc_html(_e($item['popular_text'], 'iptv')); ?></p>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="card-top">
+                                    <div class="top">
+                                        <?php if(!empty($item['limit'])): ?>
+                                            <p><?php echo esc_html(_e($item['limit'], 'iptv')); ?></p>
+                                        <?php endif; ?>
+                                        <div class="price-review">
+                                            <?php if(!empty($item['price'])): ?>
+                                                <div class="price">
+                                                    <h1 class="amount"><?php echo esc_html(_e($item['price'], 'iptv')); ?></h1>
+                                                    <p><?php echo esc_html(_e($item['one_time_or_yearly'], 'iptv')); ?></p>
+                                                </div>
+                                            <?php endif; ?>
+                                            <?php if(!empty($item['rating'])): ?>
+                                                <div class="review">
+                                                    <img src="<?php echo esc_url($item['rating']['url']); ?>" alt="<?php echo  esc_attr($item['rating']['alt']); ?>">
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="middle">
-                                    <ul class="features">
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>HD / FHD / 4K IPTV</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>15.000+ Zenders</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>100.000+ Films en Series</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>Zenders Terugkijken</span></li>
-                                    </ul>
-                                </div>
-                                <div class="bottom">
-                                    <a href="#" class="iptv-btn btn-1">PROBEER 24 UUR</a>
-                                    <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-1.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-2.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-3.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="pricing-card">
-                            <div class="popular-badge">
-                                <p>Most Popular</p>
-                            </div>
-                            <div class="card-top">
-                                <div class="top">
-                                    <p>1 Maand</p>
-                                    <div class="price-review">
-                                        <div class="price">
-                                            <h1 class="amount">€15</h1>
-                                            <p>/eenmalig</p>
+                                    <?php if(!empty($features)): ?>
+                                        <div class="middle">
+                                            <ul class="features">
+                                                <?php 
+                                                    foreach ($features as $list): 
+                                                    $icon = $list['icon'];
+                                                    $title = $list['title'];
+                                                ?>
+                                                    <li><img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo  esc_attr($icon['alt']); ?>"><span><?php echo esc_html(_e($title, 'iptv')); ?></span></li>
+                                                <?php endforeach; ?>
+                                            </ul>
                                         </div>
-                                        <div class="review">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" alt="">
+                                    <?php endif; ?>
+                                    <?php if(!empty($button_01) || !empty($button__02)): ?>
+                                        <div class="bottom">
+                                            <?php if(!empty($button_01)): ?>
+                                                <a href="<?php echo esc_url( $button_01['url'] ); ?>" target="<?php echo esc_attr( $button_01['target'] ); ?>" class="iptv-btn btn-1"><?php echo esc_html(_e($button_01['title'], 'iptv')); ?></a>
+                                            <?php endif; ?>
+                                            <?php if(!empty($button_2)): ?>
+                                                <a href="<?php echo esc_url( $button_2['url'] ); ?>" target="<?php echo esc_attr( $button_2['target'] ); ?>" class="iptv-btn btn-2"><?php echo esc_html(_e($button_2['title'], 'iptv')); ?></a>
+                                            <?php endif; ?>
                                         </div>
+                                    <?php endif; ?>
+                                </div>
+                                <?php if(!empty($payment_methods)): ?>
+                                    <div class="card-bottom">
+                                        <?php foreach ($payment_methods as $item): ?>
+                                            <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                                        <?php endforeach;?>
                                     </div>
-                                </div>
-                                <div class="middle">
-                                    <ul class="features">
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>HD / FHD / 4K IPTV</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>15.000+ Zenders</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>100.000+ Films en Series</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>Zenders Terugkijken</span></li>
-                                    </ul>
-                                </div>
-                                <div class="bottom">
-                                    <a href="#" class="iptv-btn btn-1">PROBEER 24 UUR</a>
-                                    <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-1.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-2.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-3.png" alt="">
+                                <?php endif; ?>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide popular">
-                        <div class="pricing-card">
-                            <div class="popular-badge">
-                                <p>Most Popular</p>
-                            </div>
-                            <div class="card-top">
-                                <div class="top">
-                                    <p>1 Maand</p>
-                                    <div class="price-review">
-                                        <div class="price">
-                                            <h1 class="amount">€75</h1>
-                                            <p>/eenmalig</p>
-                                        </div>
-                                        <div class="review">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="middle">
-                                    <ul class="features">
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>HD / FHD / 4K IPTV</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>15.000+ Zenders</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>100.000+ Films en Series</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>Zenders Terugkijken</span></li>
-                                    </ul>
-                                </div>
-                                <div class="bottom">
-                                    <a href="#" class="iptv-btn btn-1">PROBEER 24 UUR</a>
-                                    <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-1.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-2.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-3.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="pricing-card">
-                            <div class="popular-badge">
-                                <p>Most Popular</p>
-                            </div>
-                            <div class="card-top">
-                                <div class="top">
-                                    <p>1 Maand</p>
-                                    <div class="price-review">
-                                        <div class="price">
-                                            <h1 class="amount">€15</h1>
-                                            <p>/eenmalig</p>
-                                        </div>
-                                        <div class="review">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="middle">
-                                    <ul class="features">
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>HD / FHD / 4K IPTV</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>15.000+ Zenders</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>100.000+ Films en Series</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>Zenders Terugkijken</span></li>
-                                    </ul>
-                                </div>
-                                <div class="bottom">
-                                    <a href="#" class="iptv-btn btn-1">PROBEER 24 UUR</a>
-                                    <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-1.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-2.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-3.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="pricing-card">
-                            <div class="popular-badge">
-                                <p>Most Popular</p>
-                            </div>
-                            <div class="card-top">
-                                <div class="top">
-                                    <p>1 Maand</p>
-                                    <div class="price-review">
-                                        <div class="price">
-                                            <h1 class="amount">€15</h1>
-                                            <p>/eenmalig</p>
-                                        </div>
-                                        <div class="review">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="middle">
-                                    <ul class="features">
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>HD / FHD / 4K IPTV</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>15.000+ Zenders</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>100.000+ Films en Series</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>Zenders Terugkijken</span></li>
-                                    </ul>
-                                </div>
-                                <div class="bottom">
-                                    <a href="#" class="iptv-btn btn-1">PROBEER 24 UUR</a>
-                                    <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-1.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-2.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-3.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="pricing-card">
-                            <div class="popular-badge">
-                                <p>Most Popular</p>
-                            </div>
-                            <div class="card-top">
-                                <div class="top">
-                                    <p>1 Maand</p>
-                                    <div class="price-review">
-                                        <div class="price">
-                                            <h1 class="amount">€15</h1>
-                                            <p>/eenmalig</p>
-                                        </div>
-                                        <div class="review">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="middle">
-                                    <ul class="features">
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>HD / FHD / 4K IPTV</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>15.000+ Zenders</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>100.000+ Films en Series</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>Zenders Terugkijken</span></li>
-                                    </ul>
-                                </div>
-                                <div class="bottom">
-                                    <a href="#" class="iptv-btn btn-1">PROBEER 24 UUR</a>
-                                    <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-1.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-2.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-3.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="pricing-card">
-                            <div class="popular-badge">
-                                <p>Most Popular</p>
-                            </div>
-                            <div class="card-top">
-                                <div class="top">
-                                    <p>1 Maand</p>
-                                    <div class="price-review">
-                                        <div class="price">
-                                            <h1 class="amount">€15</h1>
-                                            <p>/eenmalig</p>
-                                        </div>
-                                        <div class="review">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="middle">
-                                    <ul class="features">
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>HD / FHD / 4K IPTV</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>15.000+ Zenders</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>100.000+ Films en Series</span></li>
-                                        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/check-icon.png" alt=""><span>Zenders Terugkijken</span></li>
-                                    </ul>
-                                </div>
-                                <div class="bottom">
-                                    <a href="#" class="iptv-btn btn-1">PROBEER 24 UUR</a>
-                                    <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-1.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-2.png" alt="">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pricing-icon-3.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    
+                    <?php endforeach; ?>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -483,119 +366,159 @@
         </div>
     </div>
 </section>
+<?php endif; endif; ?>
 
+<?php 
+    $testimonial = get_field( "testimonial" ); 
+    if(!empty($testimonial)):
+
+        $title = $testimonial['title'];
+        $description = $testimonial['description'];
+        $button__1 = $testimonial['button__1'];
+        $button__2 = $testimonial['button__2'];
+        $image = $testimonial['image'];
+?>
 <!-- Testimonial -->
 <section class="testimonial">
     <div class="container">
         <div class="row plan-row">
             <div class="col-md-6">
-                <img class="circle-shape" src="<?php echo get_template_directory_uri(); ?>/assets/images/testimonial.png" alt="">
-                <h2 class="section-title">Bekijk de <strong>reacties van</strong> anderen over ons</h2>
+                <?php if(!empty($image)): ?>
+                    <img class="circle-shape" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo  esc_attr($image['alt']); ?>">
+                <?php endif; ?>
+                <?php if(!empty($title)): ?>
+                    <h2 class="section-title"><?php echo esc_html(_e($title, 'iptv')); ?></h2>
+                <?php endif; ?>
             </div>
             <div class="col-md-6 right">
                 <div class="content">
-                    <p>Anderen waren uw voor bij een aankoop en hebben hierover een review geplaatst</p>
-                    <div class="btns-wrapper">
-                        <a href="#" class="iptv-btn btn-1">schrijf een review</a>
-                        <a href="#" class="iptv-btn btn-2">Zenderoverzicht</a>
-                    </div>
+                    <?php if(!empty($description)): ?>
+                        <p><?php echo esc_html(_e($description, 'iptv')); ?></p>
+                    <?php endif; ?>
+                    <?php if(!empty($button__1) || !empty($button__2)): ?>
+                        <div class="btns-wrapper">
+                            <?php if(!empty($button__1)): ?>
+                                <a href="<?php echo esc_url( $button__1['url'] ); ?>" target="<?php echo esc_attr( $button__1['target'] ); ?>" class="iptv-btn btn-1"><?php echo esc_html(_e($button__1['title'], 'iptv')); ?></a>
+                            <?php endif; ?>
+                            <?php if(!empty($button__2)): ?>
+                                <a href="<?php echo esc_url( $button__2['url'] ); ?>" target="<?php echo esc_attr( $button__2['target'] ); ?>" class="iptv-btn btn-2"><?php echo esc_html(_e($button__2['title'], 'iptv')); ?></a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
+<?php 
+    $faq = get_field( "faq" ); 
+    if(!empty($faq)):
+
+        $image = $faq['image'];
+        $title = $faq['title'];
+        $description = $faq['description'];
+        $faq_list = $faq['faq_list'];
+?>
 <!-- FAQ -->
 <section class="faq">
     <div class="container">
         <div class="row plan-row">
             <div class="content">
-                <img class="img" src="<?php echo get_template_directory_uri(); ?>/assets/images/googles.png" alt="">
-                <h2 class="section-title">Veel Gestelde <strong>IPTV Vragen</strong></h2>
-                <p>De meest gestelde vragen hebben wij al op een rijtje gezet</p>
+                <?php if(!empty($image)): ?>
+                    <img class="img" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo  esc_attr($image['alt']); ?>">
+                <?php endif; ?>
+                <?php if(!empty($title)): ?>
+                    <h2 class="section-title"><?php echo esc_html(_e($title, 'iptv')); ?></h2>
+                <?php endif; ?>
+                <?php if(!empty($description)): ?>
+                    <p><?php echo esc_html(_e($description, 'iptv')); ?></p>
+                <?php endif; ?>
             </div>
         </div>
-        <div class="row plan-row mt-5">
-            <div class="faq-inner">
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
-                        </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                        </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
-                        </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
+        <?php if(!empty($faq_list)): ?>
+            <div class="row plan-row mt-5">
+                <div class="faq-inner">
+                    <div class="accordion" id="accordionExample">
+                        <?php 
+                            foreach ($faq_list as $index => $item): 
+                                $title = $item['title'];
+                                $description = $item['description'];
+                                $heading_id = 'heading-' . $index;
+                                $collapse_id = 'collapse-' . $index;
+                                $show_class = ($index === 0) ? 'show' : '';
+                        ?>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="<?php echo esc_attr($heading_id); ?>">
+                                    <button class="accordion-button <?php echo ($index !== 0) ? 'collapsed' : ''; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo esc_attr($collapse_id); ?>" aria-expanded="<?php echo ($index === 0) ? 'true' : 'false'; ?>" aria-controls="<?php echo esc_attr($collapse_id); ?>">
+                                        <?php echo esc_html($title); ?>
+                                    </button>
+                                </h2>
+                                <div id="<?php echo esc_attr($collapse_id); ?>" class="accordion-collapse collapse <?php echo esc_attr($show_class); ?>" aria-labelledby="<?php echo esc_attr($heading_id); ?>" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <?php echo wp_kses_post($description); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
+
+<?php 
+    $country = get_field( "country" ); 
+    if(!empty($country)):
+
+        $flags = $country['flags'];
+?>
 <!-- Flags -->
 <div class="flags-wrapper">
     <section class="flags">
         <div class="container-fluid">
             <div class="photobanner__wrap_3">
                 <div class="photobanner_3">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-1.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-2.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-3.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-4.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-5.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-6.png" alt="" />
+                    <?php foreach ($flags as $item): ?>
+                        <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                    <?php endforeach;?>
                 </div>
                 <div class="photobanner_3">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-1.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-2.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-3.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-4.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-5.png" alt="" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/streaming-6.png" alt="" />
+                    <?php foreach ($flags as $item): ?>
+                        <img src="<?php echo esc_url($item['url']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" />
+                    <?php endforeach;?>
                 </div>
             <div>
         </div>
     </section>
 </div>
+<?php endif; ?>
 
+<?php 
+    $blogs = get_field( "blogs" ); 
+    if(!empty($blogs)):
+
+        $title = $blogs['title'];
+        $image = $blogs['image'];
+?>
 <!-- Blogs -->
 <section class="blogs">
     <div class="container">
         <div class="row plan-row">
-            <div class="col-md-6 left">
-                <h2 class="section-title">Waarom IPTV Dark</h2>
-            </div>
-            <div class="col-md-6 right">
-                <img class="circle-shape" src="<?php echo get_template_directory_uri(); ?>/assets/images/blogs.png" alt="">
-            </div>
+            <?php if(!empty($title)): ?>
+                <div class="col-md-6 left">
+                    <h2 class="section-title"><?php echo esc_html(_e($title, 'iptv')); ?></h2>
+                </div>
+            <?php endif; ?>
+            <?php if(!empty($image)): ?>
+                <div class="col-md-6 right">
+                    <img class="img" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo  esc_attr($image['alt']); ?>">
+                </div>
+            <?php endif; ?>
         </div>
         <div class="row post-row">
             <?php
@@ -623,5 +546,6 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <?php get_footer(); ?>

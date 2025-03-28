@@ -217,8 +217,24 @@
 .abonnement{
     margin-top: 50px;
     padding: 150px 20px 90px;
-    background: url("../images/reel-device.png") no-repeat top center / 200px;
+    background: url("../images/iptv-shape.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 43% -100px;
     overflow: hidden;
+
+    .left{
+        position: relative;
+        .circle-shape{
+            position: absolute;
+            right: -90px;
+            top: -170px;
+
+            @media  screen and (max-width: 992px) {
+                display: none;
+            }
+        }
+    }
 
     .right{
         display: flex;
@@ -227,12 +243,6 @@
         margin-bottom: 15px;
         padding-left: 30px;
         position: relative;
-
-        .circle-shape{
-            position: absolute;
-            bottom: 500px;
-            left: -500px;
-        }
     }
 
     .to-center{
