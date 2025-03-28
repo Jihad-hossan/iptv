@@ -35,32 +35,46 @@
 
       // Pricing Slider
       var pricing_swiper = new Swiper(".pricing-swiper", {
-        slidesPerView: 1, // Default for mobile first approach
-        spaceBetween: 20,
-        initialSlide: 1,
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-            },
-            992: {
-                slidesPerView: 3,
-                spaceBetween: 50,
-            },
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-        }
-    });
+          slidesPerView: 1, // Default for mobile first approach
+          spaceBetween: 20,
+          initialSlide: 1,
+          breakpoints: {
+              640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+              },
+              768: {
+                  slidesPerView: 2,
+                  spaceBetween: 40,
+              },
+              992: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+              },
+          },
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+          pagination: {
+              el: '.swiper-pagination',
+              clickable: true
+          }
+      });
+
+      // Posts Slider
+      var pricing_swiper = new Swiper(".posts-swiper", {
+          slidesPerView: 1, // Default for mobile first approach
+          spaceBetween: 20,
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+          pagination: {
+              el: '.swiper-pagination',
+              clickable: true
+          }
+      });
           
     });
     
