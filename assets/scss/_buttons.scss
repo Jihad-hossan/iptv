@@ -17,7 +17,9 @@
     border: 1px solid;
     border-radius: 24px;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 
     &.btn-1 {
         background-color: $primary-color;
@@ -42,5 +44,13 @@
             border-color: $primary-color;
             color: $primary-color;
         }
+    }
+
+    @media screen and (max-width: 1300px){
+        padding: 20px 20px;
+        border-radius: 12px;
+    }
+    @media screen and (max-width: 1050px){
+        font-size: 14px;
     }
 }

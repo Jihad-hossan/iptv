@@ -610,7 +610,7 @@
             if ($query->have_posts()) :
                 while ($query->have_posts()) : $query->the_post(); ?>
                     <div class="col-md-4">
-                        <a class="post" href="<?php the_permalink(); ?>">
+                        <a class="post" href="<?php the_permalink(); ?>" data-background-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                             <h4 class="title"><?php the_title(); ?></h4>
                             <p class="post-date"><?php echo get_the_date('F j, Y'); ?></p>
                         </a>

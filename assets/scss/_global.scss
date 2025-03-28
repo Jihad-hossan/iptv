@@ -18,6 +18,10 @@ p, a, li{
     font-size: 16px;
     line-height: 100%;
     letter-spacing: 0%;
+
+    @media screen and (max-width: 1050px){
+        font-size: 14px;
+    }
 }
 
 // Section Title
@@ -48,6 +52,15 @@ p, a, li{
             background: url("../images/special-icon.png") no-repeat center / contain;
         }
     }
+
+    @media screen and (max-width: 1300px){
+        font-size: 54px;
+        line-height: 110%;
+    }
+    @media screen and (max-width: 767px){
+        font-size: 42px;
+        line-height: 100%;
+    }
     
 }
 
@@ -58,6 +71,10 @@ p, a, li{
     font-size: 27px;
     line-height: 130%;
     letter-spacing: 0%;
+
+    @media screen and (max-width: 992px) {
+        font-size: 22px;
+    }
 }
 
 // Subtitle
@@ -73,6 +90,7 @@ p, a, li{
     letter-spacing: 0%;
 }
 
+// Pricing Cards
 .pricing{
     .pricing-swiper{
         padding: 60px 130px;
@@ -185,6 +203,10 @@ p, a, li{
         
         .swiper-slide-next{
             transform: translateY(-40px);
+
+            @media screen and (max-width: 767px){
+                transform: translateY(0);
+            }
         }
 
         .swiper-slide-prev, .low_opacity{
@@ -231,9 +253,57 @@ p, a, li{
                 display: block;
             }
         }
+
+        @media screen and (max-width: 1300px){
+            padding: 60px 20px;
+
+            .pricing-card{
+                .card-top{
+                    .bottom{
+        
+                        .iptv-btn{
+                            padding: 20px 40px;
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 1050px){
+
+            .pricing-card{
+                .card-top{
+                    padding: 40px 20px 30px;
+
+                    .top{
+                        .price-review{
+                            .price{
+                                .amount{
+                                    font-size: 36px;
+                                }
+                            }
+                        }
+                    }
+                    .bottom{
+        
+                        .iptv-btn{
+                            padding: 20px 20px;
+                        }
+                    }
+                }
+                .card-bottom{
+                    padding: 20px 20px;
+                }
+            }
+        }
     }
 }
 
 .container-full{
     max-width: 1920px;
+}
+
+@media screen and (max-width: 767px){
+    .row{
+        gap: 40px;
+    }
 }

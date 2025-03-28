@@ -2,14 +2,16 @@
 	$(document).ready(function () {
 
         // Data Background
-        $("[data-bg]").each(function () {
-            let bg = $(this).attr("data-bg");
-            $(this).css({
-                "background-image": `url(${bg})`,
-                "background-size": "cover",
-                "background-position": "center",
-                "background-repeat": "no-repeat"
-            });
+        $('[data-background-image]').each(function() {
+          var imageUrl = $(this).data('background-image');
+          
+          // Set the background image
+          $(this).css({
+            'background-image': 'url(' + imageUrl + ')',
+            'background-size': 'cover', // or 'contain' based on your needs
+            'background-position': 'center center',
+            'background-repeat': 'no-repeat'
+          });
         });
 
         // Hero card Swiper
@@ -33,18 +35,32 @@
 
       // Pricing Slider
       var pricing_swiper = new Swiper(".pricing-swiper", {
-          slidesPerView: 3,
-          spaceBetween: 30,
-          initialSlide: 1,
-          navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-          },
-          pagination: {
+        slidesPerView: 1, // Default for mobile first approach
+        spaceBetween: 20,
+        initialSlide: 1,
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+            },
+            992: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+            },
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
             el: '.swiper-pagination',
             clickable: true
-          }
-      });
+        }
+    });
           
     });
     

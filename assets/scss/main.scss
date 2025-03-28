@@ -13,15 +13,6 @@
     position: relative;
     background: url("../images/hero-bg.png") no-repeat center / cover;
 
-    &::before{
-        content: "";
-        width: 50%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: red;
-    }
-
     &::after{
         position: absolute;
         content: "";
@@ -30,8 +21,8 @@
         left: 0;
         right: 0;
         top: 0;
-        background: linear-gradient(231.41deg, $black 8.26%, #0E151B 68.29%);
-        z-index: -1;
+        background: linear-gradient(231.41deg, rgba(0, 0, 0, 0) 8.26%, #0E151B 68.29%);
+        z-index: 0;
     }
 
 
@@ -41,19 +32,39 @@
         gap: 30px;
         padding-right: 50px;
         position: relative;
+        z-index: 3;
+
+        .section-title, p, .btns-wrapper{
+            z-index: 1;
+        }
 
         .circle-shape{
             position: absolute;
-            top: -100px;
+            top: -250px;
+            z-index: 0;
         }
     }
 
     .right-side{
         position: relative;
+        z-index: 3;
         .swiper {
-            max-width: 600px;
+            max-width: 445px;
             height: 622px;
             aspect-ratio: 4 / 3;
+
+            @media screen and (max-width: 1300px){
+                max-width: 380px;
+                height: 500px;
+            }
+            @media screen and (max-width: 767px){
+                max-width: 340px;
+                height: 400px;
+            }
+            @media screen and (max-width: 576px){
+                max-width: 280px;
+                height: 330px;
+            }
         }
         .swiper-slide {
             border-radius: 24px;
@@ -64,6 +75,18 @@
                 width: 445px;
                 height: 622px;
                 object-fit: cover;
+                @media screen and (max-width: 1300px){
+                    width: 380px;
+                    height: 500px;
+                }
+                @media screen and (max-width: 767px){
+                    width: 340px;
+                    height: 400px;
+                }
+                @media screen and (max-width: 576px){
+                    width: 280px;
+                    height: 330px;
+                }
             }
         }
         .swiper-button-next,
@@ -88,6 +111,45 @@
                 line-height: 145%;
                 letter-spacing: 0%;
 
+            }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .row{
+            flex-direction: column;
+            gap: 40px;
+
+            .col-md-6{
+                width: 100%;
+
+                .scroll-bottom{
+                    display: none;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 767px) {
+        padding: 170px 8px 0;
+        .row{
+            flex-direction: column;
+            gap: 40px;
+
+            .left-side{
+                padding-right: 0;
+
+                .circle-shape{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 576px) {
+        .row{
+            .left-side{
+                .btns-wrapper{
+                    flex-direction: column;
+                }
             }
         }
     }
@@ -117,6 +179,35 @@
                 p{
                     font-weight: 800;
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        margin-top: 0;
+        margin-left: 0;
+        rotate: 0deg;
+        padding: 35px 20px;
+
+        .row{
+            justify-content: center;
+
+            .col-md-6{
+                width: 80%;
+            }
+        }
+    }
+    @media screen and (max-width: 767px) {
+
+        .row{
+            justify-content: center;
+
+            .col-md-6{
+                width: 100%;
+            }
+            
+            .quality-badge{
+                flex-direction: column;
             }
         }
     }
@@ -191,6 +282,49 @@
             }
         }
     }
+
+    @media screen and (max-width: 992px) {
+        .cards{
+            .card{
+                padding: 20px;
+    
+                &::after{
+                    content: "";
+                    width: 34px;
+                    height: 34px;
+                }
+    
+                img{
+                    width: 44px;
+                    height: 44px;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .right{
+            padding-left: 12px;
+    
+            .circle-shape{
+                position: absolute;
+                bottom: 500px;
+                left: -500px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .cards{
+            grid-template-columns: 1fr;
+            .card{
+                padding: 30px;
+            }
+        }
+    }
 }
 
 // Series
@@ -213,7 +347,9 @@
             align-items: center;
         }
     }
-
+    @media screen and (max-width: 992px){
+        padding: 0 20px 0px;
+    }
 }
 .series-2 {
 
@@ -236,10 +372,17 @@
             animation-iteration-count: infinite;
     
             img {
-                width: 350px;
-                height: 250px;
+                width: 180px;
+                height: 255px;
                 object-fit: cover;
-                padding-right: 20px;
+                border-radius: 16px;
+                margin-right: 20px;
+                opacity: .5;
+                transition: .3s ease;
+
+                &:hover{
+                    opacity: 1;
+                }
             }
         }
     }
@@ -263,10 +406,17 @@
             animation-iteration-count: infinite;
     
             img {
-                width: 350px;
-                height: 250px;
+                width: 180px;
+                height: 255px;
                 object-fit: cover;
-                padding-right: 20px;
+                border-radius: 16px;
+                margin-right: 20px;
+                opacity: .5;
+                transition: .3s ease;
+
+                &:hover{
+                    opacity: 1;
+                }
             }
         }
     }
@@ -283,6 +433,7 @@
 
     .photobanner__wrap_3{
         display: flex;
+        gap: 50px;
         
         &:hover {
             .photobanner_3 {
@@ -306,6 +457,12 @@
             }
         }
     }
+
+    @media screen and (max-width: 992px) {
+        padding: 35px 20px;
+        margin-top: 35px;
+        margin-bottom: 50px;
+    }
 }
 
 // Plan
@@ -328,6 +485,36 @@
         rotate: -7.42deg;
         display: flex;
         justify-content: flex-end;
+    }
+
+    @media screen and (max-width: 1200px){
+        .plan-row{
+            .content{
+                padding-left: 0;
+            }
+        }
+    }
+    @media screen and (max-width: 992px){
+        .plan-row{
+            margin-bottom: -115px;
+            .content{
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+            }
+            .reel-camera{
+                img{
+                    max-width: 300px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 767px){
+        .plan-row{
+            margin-top: 0;
+            background: url("../images/plan-shape-circle.png") no-repeat center / 600px;
+        }
     }
 }
 .plan_2{
@@ -359,6 +546,43 @@
                     padding: 30px 40px;
                     border-radius: 12px;
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1300px){
+        .plan-row{
+            .right{
+    
+                .btns-wrapper{
+                    .iptv-btn{
+                        padding: 20px 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1050px){
+        .plan-row{
+            .right{
+    
+                .btns-wrapper{
+                    .iptv-btn{
+                        padding: 20px 20px;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 992px){
+        padding-bottom: 0;
+    }
+    @media screen and (max-width: 576px){
+        .right{
+
+            .btns-wrapper{
+                flex-direction: column;
             }
         }
     }
@@ -427,6 +651,13 @@
             }
         }
     }
+
+    @media screen and (max-width: 1300px){
+        padding: 100px 20px 90px;
+    }
+    @media screen and (max-width: 992px){
+        padding: 100px 20px 0;
+    }
 }
 
 // Flags Platform
@@ -443,6 +674,7 @@
 
     .photobanner__wrap_3{
         display: flex;
+        gap: 50px;
         
         &:hover {
             .photobanner_3 {
@@ -471,6 +703,9 @@
                 }
             }
         }
+    }
+    @media screen and (max-width: 992px){
+        padding: 35px 20px;
     }
 }
 
@@ -538,6 +773,37 @@
                 color: $text-color;
                 opacity: .6;
             }
+        }
+    }
+
+    @media screen and (max-width: 992px){
+        padding: 0 20px 60px;
+
+        .plan-row{
+    
+            .right{
+                padding-right: 0;
+    
+                .circle-shape{
+                    max-width: 250px;
+                    margin-top: -95px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 767px){
+
+        .plan-row{
+    
+            .right{
+    
+                .circle-shape{
+                    display: none;
+                }
+            }
+        }
+        .post-row{
+            margin-top: 5px;
         }
     }
 }
