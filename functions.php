@@ -141,14 +141,12 @@ function iptv_scripts() {
 
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), false );
 	wp_enqueue_style( 'swiper-bundle-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), false );
-	wp_enqueue_style( 'swiper-bundle-css', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css', array(), false );
 	wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/assets/css/main.css', array(), time() );
 	wp_enqueue_style( 'iptv-style', get_stylesheet_uri(), array(), time() );
 	wp_style_add_data( 'iptv-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array('jquery'), false, true );
 	wp_enqueue_script( 'swiper-bundle', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array('jquery'), false, true );
-	wp_enqueue_script( 'swiper-bundle', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js', array('jquery'), false, true );
 	wp_enqueue_script( 'iptv-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/assets/js/script.js', array(), time(), true );
 

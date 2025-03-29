@@ -1,0 +1,107 @@
+// Boxen
+.boxen{
+    padding: 90px 20px 110px;
+    background: url("../images/iptv-shape.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 43% -100px;
+    overflow: hidden;
+
+    .right{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-bottom: 15px;
+        padding-left: 30px;
+        position: relative;
+    }
+
+    .to-center{
+        justify-content: center;
+    }
+
+    .cards{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 50px;
+        gap: 10px;
+        width: 1050px;
+
+        .card{
+            padding: 40px;
+            border: 7px solid #0B1C21;
+            background-color: #122429;
+            border-radius: 16px;
+            rotate: -3deg;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+
+            &::after{
+                content: "";
+                width: 64px;
+                height: 64px;
+                position: absolute;
+                top: -7px;
+                right: -7px;
+                clip-path: polygon(100% 0, 0 0, 100% 100%);
+                background-color: $primary-bg;
+            }
+
+            img{
+                max-width: 275px;
+                height: 166px;
+                object-fit: cover;
+            }
+            .card-title{
+                color: $text-color;
+                margin-top: 20px;
+            }
+            p {
+                font-family: $font-secondery;
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 130%;
+                letter-spacing: 0%;
+            }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .cards{
+            .card{
+                padding: 20px;
+    
+                &::after{
+                    content: "";
+                    width: 34px;
+                    height: 34px;
+                }
+    
+                img{
+                    max-width: 275px;
+                    height: 166px;
+                    object-fit: cover;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .right{
+            padding-left: 12px;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .cards{
+            grid-template-columns: 1fr;
+            .card{
+                padding: 30px;
+            }
+        }
+    }
+}
