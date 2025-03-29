@@ -705,6 +705,7 @@ p, a, li {
   letter-spacing: 0%;
   text-transform: capitalize;
   color: #ffffff;
+  z-index: 2;
 }
 .post-filter .filter-row .post-name .total-post {
   font-family: "Axiforma", sans-serif;

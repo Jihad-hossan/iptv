@@ -1,4 +1,4 @@
-<?php /* Template Name: Blog */ ?>
+<?php /* Template Name: Tutorials */ ?>
 <?php get_header();?>
 
 
@@ -44,55 +44,12 @@
 </section>
 <?php endif; ?>
 
-<!-- Post Slider -->
-<section class="posts-slider">
-    <div class="container-small">
-        <div class="row">
-            <?php 
-                $posts = get_field( "posts" ); 
-                $button_title = $posts['button_title'];
-                $filter_text_1 = $posts['filter_text_1'];
-                $filter_text_2 = $posts['filter_text_2'];
-            ?>
-            <div class="col-md-12">
-                <div class="swiper posts-swiper">
-                    <div class="swiper-wrapper">
-                    <?php
-                        $args = array(
-                            'post_type' => 'post',
-                            'posts_per_page' => 3, // Get 3 most recent posts
-                            'orderby' => 'date',
-                            'order' => 'DESC',
-                            'category_name' => 'featured'
-                        );
-                        $query = new WP_Query($args);
-                        
-                        if ($query->have_posts()) :
-                            while ($query->have_posts()) : $query->the_post(); ?>
-                        <div class="swiper-slide">
-                            <div class="post" data-background-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
-                                <div class="content">
-                                    <h4 class="title"><?php the_title(); ?></h4>
-                                    <p class="post-date"><?php echo get_the_date('F j, Y'); ?></p>
-                                </div>
-                                <a href="<?php echo get_the_permalink(); ?>" class="iptv-btn btn-1"><?php echo esc_html(_e($button_title, 'iptv')); ?></a>
-                            </div>
-                        </div>
-                        <?php endwhile;
-                            wp_reset_postdata();
-                        else : ?>
-                            <p>No posts found</p>
-                        <?php endif; ?>
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
+<?php 
+    $posts = get_field( "posts" ); 
+    $filter_text_1 = $posts['filter_text_1'];
+    $filter_text_2 = $posts['filter_text_2'];
+?>
 <!-- Posts with filter -->
 <section class="post-filter">
     <div class="container-small">
@@ -104,7 +61,7 @@
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         
         $args = array(
-            'post_type' => 'post',
+            'post_type' => 'tutorial',
             'posts_per_page' => 12,
             'orderby' => 'date',
             'order' => $selected_order,

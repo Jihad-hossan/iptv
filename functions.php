@@ -185,3 +185,114 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/**
+ * Register 'Tutorials' Custom Post Type
+ */
+function register_tutorials_post_type() {
+    $labels = array(
+        'name'               => _x('Tutorials', 'Post Type General Name', 'your-textdomain'),
+        'singular_name'      => _x('Tutorial', 'Post Type Singular Name', 'your-textdomain'),
+        'menu_name'          => __('Tutorials', 'your-textdomain'),
+        'all_items'          => __('All Tutorials', 'your-textdomain'),
+        'view_item'          => __('View Tutorial', 'your-textdomain'),
+        'add_new_item'       => __('Add New Tutorial', 'your-textdomain'),
+        'add_new'            => __('Add New', 'your-textdomain'),
+        'edit_item'          => __('Edit Tutorial', 'your-textdomain'),
+        'update_item'        => __('Update Tutorial', 'your-textdomain'),
+        'search_items'       => __('Search Tutorials', 'your-textdomain'),
+        'not_found'          => __('Not Found', 'your-textdomain'),
+        'not_found_in_trash' => __('Not found in Trash', 'your-textdomain'),
+    );
+
+    $args = array(
+        'label'               => __('tutorials', 'your-textdomain'),
+        'description'         => __('Educational tutorials and guides', 'your-textdomain'),
+        'labels'              => $labels,
+        'supports'            => array('title', 'editor', 'excerpt', 'thumbnail', 'comments', 'revisions'),
+        'public'              => true,
+        'hierarchical'        => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_nav_menus'  => true,
+        'show_in_admin_bar'  => true,
+        'menu_position'      => 5,
+        'menu_icon'          => 'dashicons-welcome-learn-more', // WordPress dashicon
+        'can_export'         => true,
+        'has_archive'        => true,
+        'exclude_from_search'=> false,
+        'publicly_queryable' => true,
+        'capability_type'    => 'post',
+        'rewrite'           => array('slug' => 'tutorials'), // URL slug
+        'show_in_rest'      => true, // Enable Gutenberg editor
+    );
+
+    register_post_type('tutorial', $args);
+}
+add_action('init', 'register_tutorials_post_type', 0);
+
+
+/**
+ * Register 'Tutorial Categories' Taxonomy
+ */
+function register_tutorial_categories() {
+    $labels = array(
+        'name'              => _x('Tutorial Categories', 'taxonomy general name', 'your-textdomain'),
+        'singular_name'     => _x('Tutorial Category', 'taxonomy singular name', 'your-textdomain'),
+        'search_items'      => __('Search Categories', 'your-textdomain'),
+        'all_items'         => __('All Categories', 'your-textdomain'),
+        'parent_item'       => __('Parent Category', 'your-textdomain'),
+        'parent_item_colon' => __('Parent Category:', 'your-textdomain'),
+        'edit_item'         => __('Edit Category', 'your-textdomain'),
+        'update_item'       => __('Update Category', 'your-textdomain'),
+        'add_new_item'      => __('Add New Category', 'your-textdomain'),
+        'new_item_name'     => __('New Category Name', 'your-textdomain'),
+        'menu_name'         => __('Categories', 'your-textdomain'),
+    );
+
+    $args = array(
+        'hierarchical'      => true, // Like categories
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'          => array('slug' => 'tutorial-category'),
+        'show_in_rest'     => true, // Enable in Gutenberg
+    );
+
+    register_taxonomy('tutorial_category', array('tutorial'), $args);
+}
+
+/**
+ * Register 'Tutorial Tags' Taxonomy
+ */
+function register_tutorial_tags() {
+    $labels = array(
+        'name'              => _x('Tutorial Tags', 'taxonomy general name', 'your-textdomain'),
+        'singular_name'     => _x('Tutorial Tag', 'taxonomy singular name', 'your-textdomain'),
+        'search_items'      => __('Search Tags', 'your-textdomain'),
+        'all_items'         => __('All Tags', 'your-textdomain'),
+        'parent_item'       => __('Parent Tag', 'your-textdomain'),
+        'parent_item_colon' => __('Parent Tag:', 'your-textdomain'),
+        'edit_item'         => __('Edit Tag', 'your-textdomain'),
+        'update_item'       => __('Update Tag', 'your-textdomain'),
+        'add_new_item'      => __('Add New Tag', 'your-textdomain'),
+        'new_item_name'     => __('New Tag Name', 'your-textdomain'),
+        'menu_name'         => __('Tags', 'your-textdomain'),
+    );
+
+    $args = array(
+        'hierarchical'      => false, // Like tags
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'          => array('slug' => 'tutorial-tag'),
+        'show_in_rest'     => true,
+    );
+
+    register_taxonomy('tutorial_tag', array('tutorial'), $args);
+}
+
+add_action('init', 'register_tutorial_categories', 0);
+add_action('init', 'register_tutorial_tags', 0);
