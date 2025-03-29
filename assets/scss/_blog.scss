@@ -105,6 +105,10 @@
 .post-filter{
     padding: 0 20px 90px;
 
+    @media screen and (max-width: 992px) {
+        padding: 0 20px 0;
+    }
+
     .filter-row{
         display: flex;
         justify-content: space-between;
@@ -227,5 +231,46 @@
                 }
             }
         }
+    }
+}
+
+
+// Single Blog
+.post_cont{
+    padding: 0 20px 90px;
+
+    @media screen and (max-width: 992px) {
+        padding: 0 20px 40px;
+    }
+
+    .entry-header{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 40px;
+
+        .entry-title{
+            color: $text-color;
+            font-size: 32px;
+            margin-top: 20px;
+
+            @media screen and (max-width: 992px) {
+                font-size: 26px;
+            }
+        }
+        .entry-meta{
+            color: #ffffff9f;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            a{
+                color: #ffffff9f;
+                text-decoration: none;
+            }
+        }
+    }
+    .entry-content{
+        color: $text-color;
     }
 }

@@ -25,6 +25,10 @@ p, a, li {
   }
 }
 
+.trp-language-switcher {
+  width: auto;
+}
+
 .section-title {
   color: #ffffff;
   font-family: "Axiforma", sans-serif;
@@ -266,6 +270,7 @@ p, a, li {
   margin-top: -80px;
   background: url("../images/hero-bg.png") no-repeat center/cover;
   background-repeat: no-repeat;
+  position: relative;
 }
 .banner::before {
   position: absolute;
@@ -381,6 +386,16 @@ p, a, li {
 }
 .iptv-header .header-right .login a:hover {
   color: #FF3B6A;
+}
+@media screen and (max-width: 767px) {
+  .iptv-header .header-right .login {
+    padding-left: 20px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .iptv-header .header-right {
+    gap: 20px;
+  }
 }
 @media screen and (max-width: 767px) {
   .iptv-header {
@@ -692,6 +707,11 @@ p, a, li {
 .post-filter {
   padding: 0 20px 90px;
 }
+@media screen and (max-width: 992px) {
+  .post-filter {
+    padding: 0 20px 0;
+  }
+}
 .post-filter .filter-row {
   display: flex;
   justify-content: space-between;
@@ -798,6 +818,44 @@ p, a, li {
 }
 .post-filter .post-row .pagination .page-numbers li .page-numbers.next, .post-filter .post-row .pagination .page-numbers li .page-numbers.prev {
   border-color: transparent;
+}
+
+.post_cont {
+  padding: 0 20px 90px;
+}
+@media screen and (max-width: 992px) {
+  .post_cont {
+    padding: 0 20px 40px;
+  }
+}
+.post_cont .entry-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.post_cont .entry-header .entry-title {
+  color: #ffffff;
+  font-size: 32px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 992px) {
+  .post_cont .entry-header .entry-title {
+    font-size: 26px;
+  }
+}
+.post_cont .entry-header .entry-meta {
+  color: rgba(255, 255, 255, 0.6235294118);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.post_cont .entry-header .entry-meta a {
+  color: rgba(255, 255, 255, 0.6235294118);
+  text-decoration: none;
+}
+.post_cont .entry-content {
+  color: #ffffff;
 }
 
 .boxen {
@@ -1109,8 +1167,18 @@ p, a, li {
   flex-direction: column;
   justify-content: flex-end;
   margin-bottom: 15px;
-  padding-left: 30px;
+  padding-left: 100px;
   position: relative;
+}
+@media screen and (max-width: 992px) {
+  .abonnement .right {
+    padding-left: 30px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .abonnement .right {
+    padding-left: 0;
+  }
 }
 .abonnement .to-center {
   justify-content: center;

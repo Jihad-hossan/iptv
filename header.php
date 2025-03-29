@@ -68,8 +68,7 @@
 				<?php the_custom_logo(); ?>
 				<div class="header-right">
 					<div class="language">
-						<a href="#">En</a>
-						<a href="#">Ro</a>
+						<?php echo do_shortcode('[language-switcher short_names=1]'); ?>
 					</div>
 					<?php if(!empty($sign_in)): ?>
 						<div class="login">

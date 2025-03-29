@@ -243,8 +243,15 @@
         flex-direction: column;
         justify-content: flex-end;
         margin-bottom: 15px;
-        padding-left: 30px;
+        padding-left: 100px;
         position: relative;
+
+        @media screen and (max-width: 992px) {
+            padding-left: 30px;
+        }        
+        @media screen and (max-width: 767px) {
+            padding-left: 0;
+        }
     }
 
     .to-center{
