@@ -227,6 +227,7 @@
 
     .left{
         position: relative;
+        padding-right: 130px;
         .circle-shape{
             position: absolute;
             right: -90px;
@@ -235,6 +236,9 @@
             @media  screen and (max-width: 992px) {
                 display: none;
             }
+        }
+        @media  screen and (max-width: 992px) {
+            padding-right: 0;
         }
     }
 
@@ -272,17 +276,7 @@
             border-radius: 16px;
             rotate: -3deg;
             position: relative;
-
-            &::after{
-                content: "";
-                width: 64px;
-                height: 64px;
-                position: absolute;
-                top: -7px;
-                right: -7px;
-                clip-path: polygon(100% 0, 0 0, 100% 100%);
-                background-color: $primary-bg;
-            }
+            clip-path: polygon(88% 0, 100% 15%, 100% 100%, 0 100%, 0 0);
 
             img{
                 width: 64px;

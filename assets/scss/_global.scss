@@ -101,7 +101,6 @@ p, a, li{
         padding: 60px 130px;
 
         .pricing-card{
-            background-color: #13242A;
             border-radius: 24px;
             position: relative;
     
@@ -110,17 +109,8 @@ p, a, li{
                 padding: 45px 38px 30px;
                 border-radius: 12px 12px 0 0;
                 position: relative;
-    
-                &::after{
-                    content: "";
-                    width: 64px;
-                    height: 64px;
-                    position: absolute;
-                    top: -7px;
-                    right: -7px;
-                    clip-path: polygon(100% 0, 0 0, 100% 100%);
-                    background-color: $primary-bg;
-                }
+                clip-path: polygon(88% 0, 100% 11%, 100% 100%, 0 100%, 0 0);
+
     
                 .top{
                     display: flex;
@@ -184,6 +174,7 @@ p, a, li{
                     flex-direction: column;
                     gap: 8px;
                     margin-top: 30px;
+
     
                     .iptv-btn{
                         border-radius: 12px;
@@ -196,6 +187,8 @@ p, a, li{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                background-color: #13242A;
+                border-radius: 0 0 12px 12px;
             }
         }
         .swiper-button-next, .swiper-button-prev{
