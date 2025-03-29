@@ -308,9 +308,10 @@ p, a, li{
 
 // Banner in inner pages
 .banner{
-    padding: 140px 0 90px;
+    padding: 140px 20px 90px;
     margin-top: -80px;
     background: url("../images/hero-bg.png") no-repeat center / cover;
+    background-repeat: no-repeat;
 
     &::before{
         position: absolute;

@@ -66,6 +66,9 @@
       var pricing_swiper = new Swiper(".posts-swiper", {
           slidesPerView: 1, // Default for mobile first approach
           spaceBetween: 20,
+          grabCursor: true,
+          loop: true,
+          autoPlay: true,
           navigation: {
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
