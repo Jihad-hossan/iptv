@@ -9,7 +9,7 @@ get_header(); // Load header template
 ?>
 
 <!-- Banner -->
-<section class="banner" >
+<section class="banner">
     <div class="container-wrapper">
         <div class="container">
             <div class="row">
@@ -30,25 +30,25 @@ get_header(); // Load header template
         <main id="primary" class="site-main">
             <?php
             // Start the Loop
-            while (have_posts()) :
+            while (have_posts()):
                 the_post();
                 ?>
-                
+
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
                     <!-- Featured Image -->
-                    <?php if (has_post_thumbnail()) : ?>
+                    <?php if (has_post_thumbnail()): ?>
                         <div class="post-thumbnail">
                             <?php the_post_thumbnail('large'); ?>
                         </div>
                     <?php endif; ?>
-                    
+
                     <!-- Post Header (Title, Meta) -->
                     <header class="entry-header">
                         <?php
                         the_title('<h1 class="entry-title">', '</h1>');
-                        
-                        if ('post' === get_post_type()) :
+
+                        if ('post' === get_post_type()):
                             ?>
                             <div class="entry-meta">
                                 <?php
@@ -63,21 +63,21 @@ get_header(); // Load header template
                     <div class="entry-content">
                         <?php
                         the_content();
-                        
+
                         // Pagination for multi-page posts
                         wp_link_pages(
                             array(
                                 'before' => '<div class="page-links">' . esc_html__('Pages:', 'yourthemename'),
-                                'after'  => '</div>',
+                                'after' => '</div>',
                             )
                         );
                         ?>
                     </div>
-                    
+
                 </article>
 
-                <?php 
-                endwhile; // End the Loop
+            <?php
+            endwhile; // End the Loop
             ?>
         </main>
     </div>
